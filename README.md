@@ -1,1 +1,0 @@
-# atiya-school-app

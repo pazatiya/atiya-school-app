@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>ATIYA SCHOOL</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8f6f1;
+  --card: #ffffff;
+  --primary: #1a3c34;
+  --primary-mid: #2d5a4e;
+  --primary-light: #e8f0ed;
+  --gold: #c9a96e;
+  --gold-light: #f5eed9;
+  --accent: #b85c38;
+  --text: #1a1a1a;
+  --text-mid: #555;
+  --text-light: #999;
+  --border: #e8e4dd;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.04);
+  --shadow: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
+  --radius: 20px;
+  --radius-sm: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans Hebrew',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* ═══ HEADER ═══ */
+.header{
+  background:var(--primary);
+  color:white;
+  padding:18px 24px;
+  display:flex;justify-content:space-between;align-items:center;
+  position:sticky;top:0;z-index:100;
+}
+.header h1{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;letter-spacing:0.5px}
+.header .sub{font-size:0.7rem;opacity:0.7;margin-top:2px}
+.header .back-btn{
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+  color:white;font-size:0.85rem;padding:8px 16px;border-radius:10px;cursor:pointer;
+  font-family:'Noto Sans Hebrew',sans-serif;font-weight:600;transition:all 0.2s;
+}
+.header .back-btn:hover{background:rgba(255,255,255,0.2)}
+
+/* ═══ HOME ═══ */
+.home{max-width:480px;margin:0 auto;padding:32px 20px}
+.logo-area{text-align:center;margin-bottom:36px}
+.logo-mark{
+  width:72px;height:72px;margin:0 auto 14px;
+  background:var(--primary);border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(26,60,52,0.25);
+  position:relative;
+}
+.logo-mark::after{
+  content:'';position:absolute;inset:-3px;border-radius:21px;
+  border:1.5px solid var(--gold);opacity:0.5;
+}
+.logo-mark span{font-size:2rem}
+.school-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:var(--primary);letter-spacing:0.5px}
+.school-tagline{font-size:0.85rem;color:var(--text-light);margin-top:4px;font-weight:500}
+.divider{width:40px;height:2px;background:var(--gold);margin:16px auto 0;border-radius:2px}
+
+.status-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 16px;border-radius:20px;font-size:0.75rem;font-weight:600;margin-top:16px;
+}
+.status-pill.ok{background:var(--primary-light);color:var(--primary)}
+.status-pill.err{background:#fef2f2;color:#991b1b}
+.status-pill .dot{width:7px;height:7px;border-radius:50%}
+.status-pill.ok .dot{background:#10b981}
+.status-pill.err .dot{background:#ef4444}
+
+/* Student Cards */
+.students-section{margin-top:8px}
+.section-label{font-size:0.75rem;color:var(--text-light);font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px}
+
+.student-card{
+  background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:20px;margin-bottom:14px;display:flex;align-items:center;gap:16px;
+  cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden;
+}
+.student-card::before{
+  content:'';position:absolute;top:0;right:0;width:4px;height:100%;
+  border-radius:0 0 0 0;transition:all 0.3s;
+}
+.student-card.liran::before{background:linear-gradient(180deg,#60a5fa,#3b82f6)}
+.student-card.adel::before{background:linear-gradient(180deg,#f9a8d4,#ec4899)}
+.student-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--gold)}
+.student-card:active{transform:scale(0.98)}
+
+.student-avatar{
+  width:56px;height:56px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;
+}
+.student-avatar.liran{background:linear-gradient(135deg,#dbeafe,#bfdbfe)}
+.student-avatar.adel{background:linear-gradient(135deg,#fce7f3,#fbcfe8)}
+.student-info{flex:1}
+.student-info h3{font-size:1.05rem;font-weight:700;margin-bottom:1px}
+.student-info .grade-badge{
+  display:inline-block;padding:2px 10px;border-radius:6px;font-size:0.7rem;
+  font-weight:700;background:var(--gold-light);color:var(--accent);margin-bottom:4px;
+}
+.student-info .meta{font-size:0.78rem;color:var(--text-light)}
+.student-arrow{color:var(--text-light);font-size:1.1rem;transition:all 0.2s}
+.student-card:hover .student-arrow{color:var(--gold);transform:translateX(-4px)}
+
+/* Teachers Preview */
+.teachers-strip{
+  display:flex;gap:10px;margin-top:6px;
+}
+.teacher-mini{
+  display:flex;align-items:center;gap:4px;font-size:0.7rem;color:var(--text-mid);
+}
+.teacher-mini .t-dot{width:22px;height:22px;border-radius:7px;overflow:hidden;flex-shrink:0}
+.teacher-mini .t-dot img{width:100%;height:100%;object-fit:cover}
+
+.parent-link{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-top:28px;padding:14px;border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);cursor:pointer;font-weight:600;font-size:0.9rem;
+  color:var(--text-mid);transition:all 0.2s;background:var(--card);
+  font-family:'Noto Sans Hebrew',sans-serif;width:100%;
+}
+.parent-link:hover{border-color:var(--gold);color:var(--primary)}
+
+/* ═══ SCHEDULE ═══ */
+.sched-wrap{max-width:480px;margin:0 auto;padding:20px}
+.today-hero{
+  background:linear-gradient(135deg,var(--primary) 0%,var(--primary-mid) 100%);
+  color:white;border-radius:var(--radius);padding:24px;margin-bottom:20px;
+  position:relative;overflow:hidden;
+}
+.today-hero::after{
+  content:'';position:absolute;top:-20px;left:-20px;width:100px;height:100px;
+  background:rgba(201,169,110,0.1);border-radius:50%;
+}
+.today-hero .day{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:800}
+.today-hero .date{font-size:0.8rem;opacity:0.8;margin-top:4px}
+.today-hero .now-badge{
+  display:inline-block;margin-top:10px;padding:5px 14px;
+  background:rgba(201,169,110,0.25);border:1px solid rgba(201,169,110,0.4);
+  border-radius:8px;font-size:0.8rem;font-weight:600;
+}
+
+.sched-list{display:flex;flex-direction:column;gap:10px}
+
+.period-row{
+  background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:16px 18px;display:flex;align-items:center;gap:14px;
+  cursor:pointer;transition:all 0.25s;position:relative;
+}
+.period-row:hover{border-color:var(--gold);box-shadow:var(--shadow-sm)}
+.period-row.active{border-color:var(--gold);background:var(--gold-light)}
+.period-row.done{opacity:0.45}
+
+.p-num{
+  width:40px;height:40px;border-radius:10px;display:flex;align-items:center;
+  justify-content:center;font-weight:800;font-size:1rem;color:white;flex-shrink:0;
+}
+.p-num.n1{background:#3b82f6}
+.p-num.n2{background:#8b5cf6}
+.p-num.n3{background:#f59e0b}
+.p-num.n4{background:#10b981}
+
+.p-info{flex:1}
+.p-subject{font-weight:700;font-size:0.95rem}
+.p-meta{font-size:0.75rem;color:var(--text-light);margin-top:2px}
+.p-teacher{font-size:0.72rem;color:var(--gold);font-weight:600;display:flex;align-items:center;gap:6px}
+.p-teacher-img{width:20px;height:20px;border-radius:6px;object-fit:cover}
+.p-icon{font-size:1.4rem}
+
+.go-btn{
+  background:var(--primary);color:white;border:none;border-radius:var(--radius-sm);
+  padding:16px;font-family:'Noto Sans Hebrew',sans-serif;font-size:1rem;font-weight:700;
+  cursor:pointer;width:100%;margin-top:18px;transition:all 0.25s;
+  letter-spacing:0.5px;
+}
+.go-btn:hover{background:var(--primary-mid);transform:translateY(-1px);box-shadow:var(--shadow)}
+.go-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+
+.weekend-box{text-align:center;padding:40px 20px}
+.weekend-box .big{font-size:3rem;margin-bottom:14px}
+.weekend-box h2{font-size:1.2rem;color:var(--primary)}
+.weekend-box p{color:var(--text-light);font-size:0.9rem;margin-top:6px}
+
+/* ═══ LESSON ═══ */
+.lesson-wrap{max-width:480px;margin:0 auto;padding:0 0 110px;min-height:100vh}
+.lesson-bar{
+  background:var(--card);border-bottom:1.5px solid var(--border);
+  padding:12px 20px;display:flex;align-items:center;gap:12px;
+}
+.lesson-teacher-ava{width:40px;height:40px;border-radius:10px;overflow:hidden;flex-shrink:0}
+.lesson-teacher-ava img{width:100%;height:100%;object-fit:cover}
+.lesson-bar-info{flex:1}
+.lesson-bar-info .name{font-weight:700;font-size:0.85rem}
+.lesson-bar-info .subj{font-size:0.72rem;color:var(--text-light)}
+.lesson-badge{background:var(--gold-light);color:var(--accent);padding:4px 10px;border-radius:6px;font-size:0.7rem;font-weight:700}
+
+/* Timer */
+.timer-strip{
+  background:#fafaf8;height:44px;display:flex;align-items:center;justify-content:center;
+  gap:8px;font-weight:700;font-size:1rem;border-bottom:1px solid var(--border);position:relative;
+}
+.timer-strip .fill{position:absolute;top:0;right:0;height:100%;background:var(--primary-light);transition:width 1s linear;z-index:0}
+.timer-strip .txt{position:relative;z-index:1;display:flex;align-items:center;gap:6px}
+.timer-strip.warn{color:var(--accent)}
+.timer-strip.warn .fill{background:#fef2f2}
+
+/* Chat */
+.chat{padding:16px;display:flex;flex-direction:column;gap:10px;min-height:300px}
+.bubble-row{display:flex;gap:8px;align-items:flex-start;animation:fadeUp 0.3s ease}
+.bubble-row.student{flex-direction:row-reverse}
+.bubble-row .bub-ava{width:32px;height:32px;border-radius:8px;object-fit:cover;flex-shrink:0;margin-top:2px}
+.bubble{max-width:82%;padding:12px 16px;border-radius:16px;font-size:0.9rem;line-height:1.65}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.bubble.teacher{background:var(--card);border:1px solid var(--border);border-bottom-right-radius:4px}
+.bubble.student{background:var(--primary);color:white;border-bottom-left-radius:4px}
+.bubble.sys{background:var(--gold-light);color:#78600d;align-self:center;font-size:0.8rem;text-align:center;border-radius:10px;padding:8px 16px}
+
+.typing-dots{align-self:flex-start;padding:12px 20px;background:var(--card);border:1px solid var(--border);border-radius:16px;display:flex;gap:5px}
+.typing-dots span{width:7px;height:7px;background:#bbb;border-radius:50%;animation:bounce 1.4s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
+
+.quick-row{display:flex;gap:8px;flex-wrap:wrap;padding:0 16px;margin-bottom:10px}
+.qbtn{
+  background:var(--card);border:1.5px solid var(--border);border-radius:20px;
+  padding:7px 14px;font-family:'Noto Sans Hebrew',sans-serif;font-size:0.78rem;
+  font-weight:500;cursor:pointer;transition:all 0.2s;color:var(--text-mid);
+}
+.qbtn:hover{border-color:var(--gold);color:var(--primary)}
+
+.input-dock{
+  position:fixed;bottom:0;left:0;right:0;background:var(--card);
+  border-top:1.5px solid var(--border);padding:10px 16px;
+  display:flex;gap:10px;align-items:center;z-index:100;max-width:480px;margin:0 auto;
+}
+.input-dock input{
+  flex:1;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:11px 16px;font-family:'Noto Sans Hebrew',sans-serif;font-size:0.88rem;
+  outline:none;direction:rtl;background:var(--bg);
+}
+.input-dock input:focus{border-color:var(--primary)}
+.input-dock .ibtn{
+  width:42px;height:42px;border-radius:var(--radius-sm);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all 0.2s;
+}
+.ibtn.send{background:var(--primary);color:white}
+.ibtn.mic{background:var(--bg);color:var(--text);border:1.5px solid var(--border)}
+.ibtn.mic.on{background:#ef4444;color:white;border-color:#ef4444;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.3)}50%{box-shadow:0 0 0 8px rgba(239,68,68,0)}}
+
+/* Parent placeholder */
+.parent-wrap{max-width:480px;margin:0 auto;padding:40px 20px;text-align:center}
+.parent-wrap .icon{font-size:2.5rem;margin-bottom:12px}
+
+/* Utility */
+.hidden{display:none!important}
+.screen{display:none}.screen.active{display:block}
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<div id="screen-home" class="screen active">
+  <div class="header">
+    <div>
+      <h1>ATIYA SCHOOL</h1>
+      <div class="sub" id="hdr-date"></div>
+    </div>
+  </div>
+  <div class="home">
+    <div class="logo-area">
+      <div class="logo-mark"><span>🎓</span></div>
+      <div class="school-title">ATIYA SCHOOL</div>
+      <div class="school-tagline">אקדמיה אישית חכמה לילדים</div>
+      <div class="divider"></div>
+      <div class="status-pill" id="srv-status"><span class="dot"></span><span>בודק חיבור...</span></div>
+    </div>
+    <div class="students-section">
+      <div class="section-label">תלמידות</div>
+      <div id="student-cards"></div>
+    </div>
+    <button class="parent-link" onclick="goParent()">👨‍👩‍👧‍👦 אזור הורים</button>
+  </div>
+</div>
+
+<!-- SCHEDULE -->
+<div id="screen-schedule" class="screen">
+  <div class="header">
+    <button class="back-btn" onclick="goHome()">→ חזרה</button>
+    <div><h1 id="sch-name"></h1></div>
+    <div></div>
+  </div>
+  <div class="sched-wrap">
+    <div class="today-hero">
+      <div class="day" id="sch-day"></div>
+      <div class="date" id="sch-date"></div>
+      <div class="now-badge" id="sch-now"></div>
+    </div>
+    <div id="weekend-box" class="weekend-box hidden">
+      <div class="big">🌟</div>
+      <h2>היום אין שיעורים!</h2>
+      <p>נתראה ביום ראשון</p>
+    </div>
+    <div class="sched-list" id="sched-list"></div>
+    <button class="go-btn" id="go-btn" onclick="startLesson()">▶ התחילי שיעור</button>
+  </div>
+</div>
+
+<!-- LESSON -->
+<div id="screen-lesson" class="screen">
+  <div class="header">
+    <button class="back-btn" onclick="exitLesson()">✕ יציאה</button>
+    <div><h1 id="les-title"></h1></div>
+    <div id="les-badge" class="lesson-badge"></div>
+  </div>
+  <div class="lesson-bar" id="les-bar">
+    <div class="lesson-teacher-ava" id="les-tava"></div>
+    <div class="lesson-bar-info">
+      <div class="name" id="les-tname"></div>
+      <div class="subj" id="les-tsubj"></div>
+    </div>
+  </div>
+  <div class="timer-strip" id="timer">
+    <div class="fill" id="timer-fill"></div>
+    <div class="txt"><span>⏱️</span><span id="timer-txt">30:00</span></div>
+  </div>
+  <div class="lesson-wrap">
+    <div class="chat" id="chat"></div>
+    <div class="quick-row" id="qrow">
+      <button class="qbtn" onclick="qsend('לא הבנתי')">😕 לא הבנתי</button>
+      <button class="qbtn" onclick="qsend('תסבירי שוב')">🔄 תסבירי שוב</button>
+      <button class="qbtn" onclick="qsend('עוד דוגמה')">💡 עוד דוגמה</button>
+      <button class="qbtn" onclick="qsend('המשיכי')">➡️ המשיכי</button>
+    </div>
+  </div>
+  <div class="input-dock">
+    <button class="ibtn mic" id="mic" onclick="toggleMic()">🎤</button>
+    <input type="text" id="inp" placeholder="כתבי כאן..." onkeydown="if(event.key==='Enter')send()">
+    <button class="ibtn send" onclick="send()">📩</button>
+  </div>
+</div>
+
+<!-- PARENT -->
+<div id="screen-parent" class="screen">
+  <div class="header">
+    <button class="back-btn" onclick="goHome()">→ חזרה</button>
+    <h1>אזור הורים</h1>
+    <div></div>
+  </div>
+  <div class="parent-wrap">
+    <div class="icon">🚧</div>
+    <p style="color:var(--text-light)">פאנל ההורים באפליקציה נפרדת — בקרוב!</p>
+  </div>
+</div>
+
+<script>
+const SERVER="https://atiya-voice-server-production.up.railway.app";
+const DUR=30*60;
+const DAYS=["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"];
+const TEACHERS={
+  michal:{name:"מיכל",img:"michal.png",class:"michal",spec:"עברית והלכה"},
+  dana:{name:"דנה",img:"dana.png",class:"dana",spec:"מתמטיקה ומדעים"},
+  shira:{name:"שירה",img:"shira.png",class:"shira",spec:"אנגלית"}
+};
+const TEACHER_MAP={
+  hebrew:"michal",halacha:"michal",kodesh:"michal",
+  math:"dana",science:"dana",
+  english:"shira"
+};
+
+let S={screen:"home",student:null,schedule:[],curPeriod:null,logId:null,
+  timerSec:DUR,timerInt:null,msgs:[],hist:[],typing:false,listening:false};
+let audio=null,recog=null;
+
+function now(){return new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Jerusalem"}))}
+function dow(){return now().getDay()}
+function fmtDate(){return now().toLocaleDateString("he-IL",{year:"numeric",month:"long",day:"numeric"})}
+function fmtTime(){return now().toLocaleTimeString("he-IL",{hour:"2-digit",minute:"2-digit"})}
+
+function show(s){document.querySelectorAll(".screen").forEach(e=>e.classList.remove("active"));document.getElementById("screen-"+s).classList.add("active");S.screen=s}
+function goHome(){if(S.timerInt){if(!confirm("בטוחה שאת רוצה לצאת?"))return;exitLesson();return}show("home")}
+function goParent(){show("parent")}
+
+function getTeacherForSubject(subjectId){
+  const key=subjectId.split("_").pop();
+  const tid=TEACHER_MAP[key];
+  return tid?TEACHERS[tid]:TEACHERS.michal;
+}
+
+async function init(){
+  document.getElementById("hdr-date").textContent=fmtDate()+" • "+fmtTime();
+  try{
+    const r=await fetch(SERVER+"/");
+    if(r.ok){document.getElementById("srv-status").className="status-pill ok";document.getElementById("srv-status").innerHTML='<span class="dot"></span><span>השרת מחובר ומוכן</span>'}
+    else throw 0;
+  }catch{document.getElementById("srv-status").className="status-pill err";document.getElementById("srv-status").innerHTML='<span class="dot"></span><span>בעיית חיבור</span>'}
+  try{
+    const r=await fetch(SERVER+"/students");const d=await r.json();
+    renderCards(d.students);
+  }catch(e){console.error(e)}
+}
+
+function renderCards(students){
+  document.getElementById("student-cards").innerHTML=students.map(s=>`
+    <div class="student-card ${s.id}" onclick="pickStudent('${s.id}')">
+      <div class="student-avatar ${s.id}">${s.id==='liran'?'👧':'👧🏻'}</div>
+      <div class="student-info">
+        <h3>${s.name}</h3>
+        <span class="grade-badge">כיתה ${s.grade} • ${s.age} שנים</span>
+        <div class="teachers-strip">
+          <div class="teacher-mini"><span class="t-dot"><img src="michal.png" alt="מיכל"></span>מיכל</div>
+          <div class="teacher-mini"><span class="t-dot"><img src="dana.png" alt="דנה"></span>דנה</div>
+          <div class="teacher-mini"><span class="t-dot"><img src="shira.png" alt="שירה"></span>שירה</div>
+        </div>
+      </div>
+      <div class="student-arrow">←</div>
+    </div>`).join("");
+}
+
+async function pickStudent(id){
+  try{
+    const sr=await fetch(SERVER+"/students");const sd=await sr.json();
+    S.student=sd.students.find(s=>s.id===id);
+    const d=dow();
+    show("schedule");
+    document.getElementById("sch-name").textContent=S.student.name;
+    document.getElementById("sch-day").textContent="יום "+DAYS[d];
+    document.getElementById("sch-date").textContent=fmtDate();
+    if(d>=5){
+      document.getElementById("sch-now").textContent="🌟 סוף שבוע";
+      document.getElementById("weekend-box").classList.remove("hidden");
+      document.getElementById("sched-list").innerHTML="";
+      document.getElementById("go-btn").classList.add("hidden");
+      return;
+    }
+    document.getElementById("weekend-box").classList.add("hidden");
+    document.getElementById("go-btn").classList.remove("hidden");
+    const r=await fetch(`${SERVER}/schedule/${id}/${d}`);const data=await r.json();
+    S.schedule=data.schedule;S.curPeriod=0;
+    document.getElementById("sch-now").textContent=S.schedule.length>0?`שעה ${S.schedule[0].period} — ${S.schedule[0].subject_name}`:"אין שיעורים";
+    renderSched();
+  }catch(e){console.error(e)}
+}
+
+function renderSched(){
+  const times=["08:00 – 08:30","08:45 – 09:15","09:30 – 10:00","10:15 – 10:45"];
+  document.getElementById("sched-list").innerHTML=S.schedule.map((s,i)=>{
+    const t=getTeacherForSubject(s.subject_id);
+    const active=i===S.curPeriod;const done=i<S.curPeriod;
+    return`<div class="period-row ${active?'active':''} ${done?'done':''}" onclick="selPeriod(${i})">
+      <div class="p-num n${s.period}">${s.period}</div>
+      <div class="p-info">
+        <div class="p-subject">${s.subject_name}</div>
+        <div class="p-teacher"><img src="${t.img}" class="p-teacher-img"> ${t.name} • ${t.spec}</div>
+        <div class="p-meta">${times[i]||''} • 30 דקות</div>
+      </div>
+      <div class="p-icon">${s.icon||'📚'}</div>
+    </div>`}).join("");
+}
+
+function selPeriod(i){
+  S.curPeriod=i;
+  document.getElementById("sch-now").textContent=`שעה ${S.schedule[i].period} — ${S.schedule[i].subject_name}`;
+  renderSched();
+}
+
+async function startLesson(){
+  if(S.curPeriod===null||!S.schedule[S.curPeriod])return;
+  const p=S.schedule[S.curPeriod];
+  const t=getTeacherForSubject(p.subject_id);
+  try{
+    const r=await fetch(SERVER+"/log/start",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({studentId:S.student.id,lessonId:p.subject_id+"_"+Date.now(),subjectId:p.subject_id,period:p.period})});
+    const d=await r.json();S.logId=d.logId;
+  }catch{}
+  show("lesson");
+  document.getElementById("les-title").textContent=`${p.icon||'📚'} ${p.subject_name}`;
+  document.getElementById("les-badge").textContent=`שעה ${p.period}`;
+  document.getElementById("les-tava").innerHTML=`<img src="${t.img}" alt="${t.name}">`;
+  document.getElementById("les-tname").textContent=`המורה ${t.name}`;
+  document.getElementById("les-tsubj").textContent=t.spec;
+  S.msgs=[];S.hist=[];S.timerSec=DUR;
+  document.getElementById("chat").innerHTML="";
+  startTimer();
+  firstMsg(p,t);
+}
+
+async function firstMsg(p,t){
+  let pi="";
+  try{const r=await fetch(`${SERVER}/parent/instructions/${S.student.id}`);const d=await r.json();
+    if(d.instructions.length>0)pi="\n\nהנחיות מההורים:\n"+d.instructions.map(i=>"• "+i.instruction).join("\n")}catch{}
+  
+  // שלוף שיעור נוכחי מה-DB
+  let lessonContent="";
+  let lessonTitle="";
+  let lessonBook="";
+  try{
+    const r=await fetch(`${SERVER}/lesson/current/${S.student.id}/${p.subject_id}`);
+    const d=await r.json();
+    if(d.lesson){
+      S.currentLesson=d.lesson;
+      lessonContent=d.lesson.content||"";
+      lessonTitle=d.lesson.title||"";
+      lessonBook=d.lesson.book||"";
+    }
+  }catch{}
+  
+  const sp=buildSP(p,t,pi,lessonTitle,lessonBook,lessonContent);
+  S.typing=true;addDots();
+  try{
+    const r=await fetch(SERVER+"/ai",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({systemPrompt:sp,history:[],message:`שעה ${p.period}, מקצוע: ${p.subject_name}. נושא: ${lessonTitle||p.subject_name}. התחילי את השיעור. השעה ${fmtTime()}.`})});
+    const d=await r.json();rmDots();S.typing=false;
+    addBub("teacher",d.text);
+    S.hist.push({role:"user",parts:[{text:"התחילי שיעור"}]},{role:"model",parts:[{text:d.text}]});
+    speak(d.text);
+  }catch{rmDots();S.typing=false;addBub("sys","⚠️ שגיאה בטעינה. נסי שוב.")}
+}
+
+function buildSP(p,t,pi,lesTitle,lesBook,lesContent){
+  const s=S.student;
+  const tid=Object.keys(TEACHERS).find(k=>TEACHERS[k].name===t.name);
+  const personality=TEACHERS[tid]?.personality||'';
+  return`את "${t.name}" — מורה ב-ATIYA SCHOOL.
+${personality}
+
+תלמידה: ${s.name}, כיתה ${s.grade}, בת ${s.age}.
+
+═══ כללי ═══
+• דברי בעברית חמה ומעודדת
+• קראי ל${s.name} בשם
+• שיעור 30 דקות — נהלי את הזמן
+• דוגמאות, שאלות, חיזוקים
+• אל תמציאי תוכן — לימדי רק מה שכתוב למטה בתוכנית
+• בסוף: סכמי מה למדנו + תני שיעורי בית אם צריך
+• אם לא הספיקה — תגידי לה להשלים כשיעורי בית
+
+═══ מקצוע: ${p.subject_name} ═══
+שעה: ${p.period}/4
+${lesBook?`חוברת: ${lesBook}`:''}
+${lesTitle?`נושא השיעור: ${lesTitle}`:''}
+
+═══ תוכן השיעור (לימדי מזה!) ═══
+${lesContent||'אין תוכן מוגדר — לימדי נושא כללי במקצוע'}
+${pi}`}
+
+function startTimer(){
+  updTimer();
+  S.timerInt=setInterval(()=>{S.timerSec--;updTimer();if(S.timerSec<=0){clearInterval(S.timerInt);S.timerInt=null;onEnd()}},1000);
+}
+function updTimer(){
+  const m=Math.floor(S.timerSec/60),s=S.timerSec%60;
+  document.getElementById("timer-txt").textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+  document.getElementById("timer-fill").style.width=((DUR-S.timerSec)/DUR*100)+"%";
+  const el=document.getElementById("timer");
+  S.timerSec<=300?el.classList.add("warn"):el.classList.remove("warn");
+}
+
+async function onEnd(){
+  addBub("sys","⏰ הזמן נגמר!");
+  try{
+    const r=await fetch(SERVER+"/ai",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({systemPrompt:"סכמי בקצרה. תני שיעורי בית אם לא הספיקו.\nפורמט:\nסיכום: ...\nשיעורי בית: ...",
+        history:S.hist,message:"הזמן נגמר. סכמי ותני שיעורי בית."})});
+    const d=await r.json();addBub("teacher",d.text);speak(d.text);
+    await fetch(SERVER+"/log/end",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({logId:S.logId,completed:true,endedEarly:false,summary:d.text,durationMinutes:30,conversation:S.msgs})});
+    // קדם לשיעור הבא במקצוע
+    await fetch(SERVER+"/progress/advance",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({studentId:S.student.id,subjectId:S.schedule[S.curPeriod].subject_id,stars:1})});
+    if(d.text.includes("שיעורי בית")){
+      const hw=d.text.split("שיעורי בית:")[1];
+      if(hw)await fetch(SERVER+"/homework",{method:"POST",headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({studentId:S.student.id,lessonLogId:S.logId,subjectId:S.schedule[S.curPeriod].subject_id,description:hw.trim(),isCompletionHw:true})});
+    }
+  }catch{}
+  setTimeout(()=>{
+    if(S.curPeriod<S.schedule.length-1){
+      addBub("sys","מוכנה לשיעור הבא?");
+      const b=document.createElement("button");b.className="go-btn";b.style.margin="12px 16px";b.textContent="▶ עברי לשיעור הבא";
+      b.onclick=()=>{S.curPeriod++;startLesson()};document.getElementById("chat").appendChild(b);
+    }else addBub("sys","🎉 כל הכבוד! סיימת את כל השיעורים!");
+  },2000);
+}
+
+async function exitLesson(){
+  if(S.timerInt){clearInterval(S.timerInt);S.timerInt=null;
+    const mins=Math.floor((DUR-S.timerSec)/60);
+    try{await fetch(SERVER+"/log/end",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({logId:S.logId,completed:false,endedEarly:true,summary:`יצאה אחרי ${mins} דק`,durationMinutes:mins,conversation:S.msgs})})}catch{}}
+  show("schedule");
+}
+
+function addBub(role,text){
+  S.msgs.push({role,text,time:fmtTime()});
+  if(role==="sys"){
+    const d=document.createElement("div");d.className="bubble sys";
+    d.textContent=text;document.getElementById("chat").appendChild(d);d.scrollIntoView({behavior:"smooth"});return;
+  }
+  const row=document.createElement("div");row.className="bubble-row "+(role==="student"?"student":"");
+  const t=S.schedule&&S.schedule[S.curPeriod]?getTeacherForSubject(S.schedule[S.curPeriod].subject_id):TEACHERS.michal;
+  if(role==="teacher"){
+    const ava=document.createElement("img");ava.className="bub-ava";ava.src=t.img;ava.alt=t.name;row.appendChild(ava);
+  }
+  const bub=document.createElement("div");bub.className="bubble "+role;bub.textContent=text;
+  row.appendChild(bub);document.getElementById("chat").appendChild(row);row.scrollIntoView({behavior:"smooth"});
+}
+function addDots(){const d=document.createElement("div");d.className="typing-dots";d.id="dots";d.innerHTML="<span></span><span></span><span></span>";document.getElementById("chat").appendChild(d);d.scrollIntoView({behavior:"smooth"})}
+function rmDots(){const e=document.getElementById("dots");if(e)e.remove()}
+
+async function send(){
+  const inp=document.getElementById("inp");const t=inp.value.trim();if(!t||S.typing)return;inp.value="";
+  addBub("student",t);S.typing=true;addDots();
+  try{
+    S.hist.push({role:"user",parts:[{text:t}]});
+    const r=await fetch(SERVER+"/ai",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({systemPrompt:buildSP(S.schedule[S.curPeriod],getTeacherForSubject(S.schedule[S.curPeriod].subject_id),"",S.currentLesson?.title||"",S.currentLesson?.book||"",S.currentLesson?.content||""),history:S.hist,message:t})});
+    const d=await r.json();rmDots();S.typing=false;
+    S.hist.push({role:"model",parts:[{text:d.text}]});addBub("teacher",d.text);speak(d.text);
+  }catch{rmDots();S.typing=false;addBub("sys","⚠️ שגיאה")}
+}
+function qsend(t){document.getElementById("inp").value=t;send()}
+
+async function speak(text){
+  if(!text)return;
+  try{const r=await fetch(SERVER+"/voice",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text})});
+    if(!r.ok)return;const b=await r.blob();const u=URL.createObjectURL(b);
+    if(audio){audio.pause();URL.revokeObjectURL(audio.src)}
+    audio=new Audio(u);audio.onended=()=>{URL.revokeObjectURL(u);audio=null};audio.play().catch(()=>{});
+  }catch{}
+}
+
+function toggleMic(){
+  if(S.listening){if(recog)recog.stop();S.listening=false;document.getElementById("mic").classList.remove("on");return}
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){alert("הדפדפן לא תומך");return}
+  recog=new SR();recog.lang="he-IL";recog.continuous=false;recog.interimResults=false;
+  recog.onstart=()=>{S.listening=true;document.getElementById("mic").classList.add("on")};
+  recog.onresult=e=>{document.getElementById("inp").value=e.results[0][0].transcript;send()};
+  recog.onend=()=>{S.listening=false;document.getElementById("mic").classList.remove("on")};
+  recog.onerror=()=>{S.listening=false;document.getElementById("mic").classList.remove("on")};
+  recog.start();
+}
+
+init();
+setInterval(()=>{document.getElementById("hdr-date").textContent=fmtDate()+" • "+fmtTime()},60000);
+</script>
+</body>
+</html>
